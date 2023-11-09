@@ -1,0 +1,1491 @@
+<!DOCTYPE html>
+<html>
+<head>
+    
+    <meta http-equiv="content-type" content="text/html; charset=UTF-8" />
+    
+        <script>
+            L_NO_TOUCH = false;
+            L_DISABLE_3D = false;
+        </script>
+    
+    <style>html, body {width: 100%;height: 100%;margin: 0;padding: 0;}</style>
+    <style>#map {position:absolute;top:0;bottom:0;right:0;left:0;}</style>
+    <script src="https://cdn.jsdelivr.net/npm/leaflet@1.9.3/dist/leaflet.js"></script>
+    <script src="https://code.jquery.com/jquery-1.12.4.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.2/dist/js/bootstrap.bundle.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/Leaflet.awesome-markers/2.0.2/leaflet.awesome-markers.js"></script>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/leaflet@1.9.3/dist/leaflet.css"/>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.2/dist/css/bootstrap.min.css"/>
+    <link rel="stylesheet" href="https://netdna.bootstrapcdn.com/bootstrap/3.0.0/css/bootstrap.min.css"/>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free@6.2.0/css/all.min.css"/>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/Leaflet.awesome-markers/2.0.2/leaflet.awesome-markers.css"/>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/python-visualization/folium/folium/templates/leaflet.awesome.rotate.min.css"/>
+    
+            <meta name="viewport" content="width=device-width,
+                initial-scale=1.0, maximum-scale=1.0, user-scalable=no" />
+            <style>
+                #map_0c302df64e4072df909d590ea96fbef6 {
+                    position: relative;
+                    width: 1200.0px;
+                    height: 600.0px;
+                    left: 0.0%;
+                    top: 0.0%;
+                }
+                .leaflet-container { font-size: 1rem; }
+            </style>
+        
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/leaflet.markercluster/1.1.0/leaflet.markercluster.js"></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/leaflet.markercluster/1.1.0/MarkerCluster.css"/>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/leaflet.markercluster/1.1.0/MarkerCluster.Default.css"/>
+    <script src="https://cdn.jsdelivr.net/npm/leaflet-tag-filter-button/src/leaflet-tag-filter-button.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/leaflet-easybutton@2/src/easy-button.js"></script>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/leaflet-tag-filter-button/src/leaflet-tag-filter-button.css"/>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/leaflet-easybutton@2/src/easy-button.css"/>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/css-ripple-effect@1.0.5/dist/ripple.min.css"/>
+</head>
+<body>
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Healthcare facilities in Seattle</title>
+    <style>
+        body {
+            padding-left: 30px; 
+            padding-right: 30px;
+        }
+    </style>
+</head>
+<body>
+    <h1><center>Healthcare facilities in Seattle</center></h1>
+    <p style="font-size: 15px;">This map helps in locating the healthcare facilities available in Seattle. This map uses the healthcare data from the “Open Street Map”. The healthcare facilities in Seattle are superimposed on top of the geographical base map of the city, and their exact locations are indicated with markers. The locations of healthcare facilities on the map represent hospitals, clinics, pharmacies, and dental care. The marker icons and distinctive colors reflect the four distinct healthcare categories, making it easier for viewers to differentiate between various healthcare facilities. Additionally, a filter has been incorporated in the map, to facilitate the users in selecting a specific healthcare category and identifying their corresponding location. A tooltip is added to indicate the healthcare facility's name, alongside the street address.  The map can also be zoomed in to pinpoint the precise location of the healthcare facility. It is evident from the map that pharmacy and dental care are more prevalent in the North of Seattle, while hospitals and clinics are concentrated in the city's center. </p>
+</body>
+<div class="content">
+<!-- Page content -->
+</div>
+</html>
+    
+    
+              <h2 align="center" style="font-size:20px"><b>Healthcare facilities in Seattle</b></h2>
+             
+    
+            <div class="folium-map" id="map_0c302df64e4072df909d590ea96fbef6" ></div>
+        
+</body>
+<script>
+    
+    
+            var map_0c302df64e4072df909d590ea96fbef6 = L.map(
+                "map_0c302df64e4072df909d590ea96fbef6",
+                {
+                    center: [47.60772, -122.34206],
+                    crs: L.CRS.EPSG3857,
+                    zoom: 11,
+                    zoomControl: true,
+                    preferCanvas: false,
+                }
+            );
+            L.control.scale().addTo(map_0c302df64e4072df909d590ea96fbef6);
+
+            
+
+        
+    
+            var tile_layer_497c9b19d7e75da3eabc8fd45315e97e = L.tileLayer(
+                "https://cartodb-basemaps-{s}.global.ssl.fastly.net/light_all/{z}/{x}/{y}.png",
+                {"attribution": "\u0026copy; \u003ca target=\"_blank\" href=\"http://www.openstreetmap.org/copyright\"\u003eOpenStreetMap\u003c/a\u003e contributors \u0026copy; \u003ca target=\"_blank\" href=\"http://cartodb.com/attributions\"\u003eCartoDB\u003c/a\u003e, CartoDB \u003ca target=\"_blank\" href =\"http://cartodb.com/attributions\"\u003eattributions\u003c/a\u003e", "detectRetina": false, "maxNativeZoom": 18, "maxZoom": 18, "minZoom": 0, "noWrap": false, "opacity": 1, "subdomains": "abc", "tms": false}
+            ).addTo(map_0c302df64e4072df909d590ea96fbef6);
+        
+    
+            var marker_cluster_54a6248bda5322923f12114f07d1c2c5 = L.markerClusterGroup(
+                {}
+            );
+            map_0c302df64e4072df909d590ea96fbef6.addLayer(marker_cluster_54a6248bda5322923f12114f07d1c2c5);
+        
+    
+            var marker_54211495c35c4370906d6319ab42b3a3 = L.marker(
+                [47.7158806, -122.3394579],
+                {"tags": ["Hospital"]}
+            ).addTo(map_0c302df64e4072df909d590ea96fbef6);
+        
+    
+            var icon_a0569f53ab61c45bb677e61a85ea4a30 = L.AwesomeMarkers.icon(
+                {"extraClasses": "fa-rotate-0", "icon": "hospital", "iconColor": "white", "markerColor": "blue", "prefix": "fa"}
+            );
+            marker_54211495c35c4370906d6319ab42b3a3.setIcon(icon_a0569f53ab61c45bb677e61a85ea4a30);
+        
+    
+            marker_54211495c35c4370906d6319ab42b3a3.bindTooltip(
+                `<div>
+                     University of Washington Medical Center - Northwest<br>Street: None
+                 </div>`,
+                {"sticky": true}
+            );
+        
+    
+            var marker_dbd14c6d20a7ffd9cc0211bb2fa67155 = L.marker(
+                [47.6990412, -122.326977],
+                {"tags": ["Clinic"]}
+            ).addTo(map_0c302df64e4072df909d590ea96fbef6);
+        
+    
+            var icon_da63c3e3d2c6f60b2ba26ed9b1d4806b = L.AwesomeMarkers.icon(
+                {"extraClasses": "fa-rotate-0", "icon": "c", "iconColor": "white", "markerColor": "orange", "prefix": "fa"}
+            );
+            marker_dbd14c6d20a7ffd9cc0211bb2fa67155.setIcon(icon_da63c3e3d2c6f60b2ba26ed9b1d4806b);
+        
+    
+            marker_dbd14c6d20a7ffd9cc0211bb2fa67155.bindTooltip(
+                `<div>
+                     The Polyclinic Northgate Plaza<br>Street: 3rd Avenue Northeast
+                 </div>`,
+                {"sticky": true}
+            );
+        
+    
+            var marker_fbf5af4af0f8a07f024228f88595a285 = L.marker(
+                [47.610721, -122.3209335],
+                {"tags": ["Clinic"]}
+            ).addTo(map_0c302df64e4072df909d590ea96fbef6);
+        
+    
+            var icon_9b8c16d385a327e81b87cc55c1efd515 = L.AwesomeMarkers.icon(
+                {"extraClasses": "fa-rotate-0", "icon": "c", "iconColor": "white", "markerColor": "orange", "prefix": "fa"}
+            );
+            marker_fbf5af4af0f8a07f024228f88595a285.setIcon(icon_9b8c16d385a327e81b87cc55c1efd515);
+        
+    
+            marker_fbf5af4af0f8a07f024228f88595a285.bindTooltip(
+                `<div>
+                     Swedish Family Medicine<br>Street: Madison Street
+                 </div>`,
+                {"sticky": true}
+            );
+        
+    
+            var marker_9045e3fd619afa9d2c8e3d231e3ca033 = L.marker(
+                [47.5647422, -122.3063422],
+                {"tags": ["Hospital"]}
+            ).addTo(map_0c302df64e4072df909d590ea96fbef6);
+        
+    
+            var icon_e76d9c0e16ed60fa877f91b06786ff80 = L.AwesomeMarkers.icon(
+                {"extraClasses": "fa-rotate-0", "icon": "hospital", "iconColor": "white", "markerColor": "blue", "prefix": "fa"}
+            );
+            marker_9045e3fd619afa9d2c8e3d231e3ca033.setIcon(icon_e76d9c0e16ed60fa877f91b06786ff80);
+        
+    
+            marker_9045e3fd619afa9d2c8e3d231e3ca033.bindTooltip(
+                `<div>
+                     VA Medical Center - Seattle<br>Street: South Columbian Way
+                 </div>`,
+                {"sticky": true}
+            );
+        
+    
+            var marker_c880008fdf488f67162e2ad9d92d3a93 = L.marker(
+                [47.6559717, -122.303791],
+                {"tags": ["Clinic"]}
+            ).addTo(map_0c302df64e4072df909d590ea96fbef6);
+        
+    
+            var icon_8c0b87b03af85550500de70dcba4101e = L.AwesomeMarkers.icon(
+                {"extraClasses": "fa-rotate-0", "icon": "c", "iconColor": "white", "markerColor": "orange", "prefix": "fa"}
+            );
+            marker_c880008fdf488f67162e2ad9d92d3a93.setIcon(icon_8c0b87b03af85550500de70dcba4101e);
+        
+    
+            marker_c880008fdf488f67162e2ad9d92d3a93.bindTooltip(
+                `<div>
+                     Hall Health Center<br>Street: East Stevens Way Northeast
+                 </div>`,
+                {"sticky": true}
+            );
+        
+    
+            var marker_2f36d1c107688971ed6bb07cb9435975 = L.marker(
+                [47.7012375, -122.3241313],
+                {"tags": ["Clinic"]}
+            ).addTo(map_0c302df64e4072df909d590ea96fbef6);
+        
+    
+            var icon_8dc6f026dcb21f5879f75630fb52c47d = L.AwesomeMarkers.icon(
+                {"extraClasses": "fa-rotate-0", "icon": "c", "iconColor": "white", "markerColor": "orange", "prefix": "fa"}
+            );
+            marker_2f36d1c107688971ed6bb07cb9435975.setIcon(icon_8dc6f026dcb21f5879f75630fb52c47d);
+        
+    
+            marker_2f36d1c107688971ed6bb07cb9435975.bindTooltip(
+                `<div>
+                     Kaiser Permanente Northgate Medical Center<br>Street: 4th Avenue Northeast
+                 </div>`,
+                {"sticky": true}
+            );
+        
+    
+            var marker_28553cfe7cb3940c81a10235eb4a607e = L.marker(
+                [47.7084253, -122.3184173],
+                {"tags": ["Pharmacy"]}
+            ).addTo(map_0c302df64e4072df909d590ea96fbef6);
+        
+    
+            var icon_81d4b888fba301153c64e3f2e211d301 = L.AwesomeMarkers.icon(
+                {"extraClasses": "fa-rotate-0", "icon": "p", "iconColor": "white", "markerColor": "green", "prefix": "fa"}
+            );
+            marker_28553cfe7cb3940c81a10235eb4a607e.setIcon(icon_81d4b888fba301153c64e3f2e211d301);
+        
+    
+            marker_28553cfe7cb3940c81a10235eb4a607e.bindTooltip(
+                `<div>
+                     Walgreens<br>Street: Northeast Northgate Way
+                 </div>`,
+                {"sticky": true}
+            );
+        
+    
+            var marker_5347f49ac4910500132f40cb0a04dfae = L.marker(
+                [47.7041563, -122.3226749],
+                {"tags": ["Clinic"]}
+            ).addTo(map_0c302df64e4072df909d590ea96fbef6);
+        
+    
+            var icon_ea336743b7d205c31e734280340440ce = L.AwesomeMarkers.icon(
+                {"extraClasses": "fa-rotate-0", "icon": "c", "iconColor": "white", "markerColor": "orange", "prefix": "fa"}
+            );
+            marker_5347f49ac4910500132f40cb0a04dfae.setIcon(icon_ea336743b7d205c31e734280340440ce);
+        
+    
+            marker_5347f49ac4910500132f40cb0a04dfae.bindTooltip(
+                `<div>
+                     Pacific Medical Center Northgate<br>Street: 5th Avenue Northeast
+                 </div>`,
+                {"sticky": true}
+            );
+        
+    
+            var marker_50bc3c01cdbf8eda57d8a899cc5f6839 = L.marker(
+                [47.69097, -122.3766137],
+                {"tags": ["Pharmacy"]}
+            ).addTo(map_0c302df64e4072df909d590ea96fbef6);
+        
+    
+            var icon_672ba8ccc228700035756e626ba5e728 = L.AwesomeMarkers.icon(
+                {"extraClasses": "fa-rotate-0", "icon": "p", "iconColor": "white", "markerColor": "green", "prefix": "fa"}
+            );
+            marker_50bc3c01cdbf8eda57d8a899cc5f6839.setIcon(icon_672ba8ccc228700035756e626ba5e728);
+        
+    
+            marker_50bc3c01cdbf8eda57d8a899cc5f6839.bindTooltip(
+                `<div>
+                     Walgreens<br>Street: 15th Avenue Northwest
+                 </div>`,
+                {"sticky": true}
+            );
+        
+    
+            var marker_70110bb5adf55534764172cbf5997184 = L.marker(
+                [47.6684028, -122.3770539],
+                {"tags": ["Pharmacy"]}
+            ).addTo(map_0c302df64e4072df909d590ea96fbef6);
+        
+    
+            var icon_0159aa1f21689a45b76ca68c6642cd2b = L.AwesomeMarkers.icon(
+                {"extraClasses": "fa-rotate-0", "icon": "p", "iconColor": "white", "markerColor": "green", "prefix": "fa"}
+            );
+            marker_70110bb5adf55534764172cbf5997184.setIcon(icon_0159aa1f21689a45b76ca68c6642cd2b);
+        
+    
+            marker_70110bb5adf55534764172cbf5997184.bindTooltip(
+                `<div>
+                     Walgreens<br>Street: 15th Avenue Northwest
+                 </div>`,
+                {"sticky": true}
+            );
+        
+    
+            var marker_f0f0a18ed227da3e453a2ae6644d005d = L.marker(
+                [47.6187895, -122.3109124],
+                {"tags": ["Clinic"]}
+            ).addTo(map_0c302df64e4072df909d590ea96fbef6);
+        
+    
+            var icon_c4811221a958a46c730081fdbdde343a = L.AwesomeMarkers.icon(
+                {"extraClasses": "fa-rotate-0", "icon": "c", "iconColor": "white", "markerColor": "orange", "prefix": "fa"}
+            );
+            marker_f0f0a18ed227da3e453a2ae6644d005d.setIcon(icon_c4811221a958a46c730081fdbdde343a);
+        
+    
+            marker_f0f0a18ed227da3e453a2ae6644d005d.bindTooltip(
+                `<div>
+                     Sound Mental Health<br>Street: 16th Avenue East
+                 </div>`,
+                {"sticky": true}
+            );
+        
+    
+            var marker_8ca306874881ff63e659358c8458ae96 = L.marker(
+                [47.581759, -122.300937],
+                {"tags": ["Pharmacy"]}
+            ).addTo(map_0c302df64e4072df909d590ea96fbef6);
+        
+    
+            var icon_d12d93f04f8956a5090088565a9aa048 = L.AwesomeMarkers.icon(
+                {"extraClasses": "fa-rotate-0", "icon": "p", "iconColor": "white", "markerColor": "green", "prefix": "fa"}
+            );
+            marker_8ca306874881ff63e659358c8458ae96.setIcon(icon_d12d93f04f8956a5090088565a9aa048);
+        
+    
+            marker_8ca306874881ff63e659358c8458ae96.bindTooltip(
+                `<div>
+                     Bartell Drugs<br>Street: Rainier Avenue South
+                 </div>`,
+                {"sticky": true}
+            );
+        
+    
+            var marker_1a0f4603413b4c88dca456cb690f68eb = L.marker(
+                [47.603423, -122.3227919],
+                {"tags": ["Hospital"]}
+            ).addTo(map_0c302df64e4072df909d590ea96fbef6);
+        
+    
+            var icon_7e2e833d7f2879c9fd86db484541f0d8 = L.AwesomeMarkers.icon(
+                {"extraClasses": "fa-rotate-0", "icon": "hospital", "iconColor": "white", "markerColor": "blue", "prefix": "fa"}
+            );
+            marker_1a0f4603413b4c88dca456cb690f68eb.setIcon(icon_7e2e833d7f2879c9fd86db484541f0d8);
+        
+    
+            marker_1a0f4603413b4c88dca456cb690f68eb.bindTooltip(
+                `<div>
+                     Harborview Medical Center<br>Street: 9th Avenue
+                 </div>`,
+                {"sticky": true}
+            );
+        
+    
+            var marker_26c98a7b0604a75f35e829b56d6c71bd = L.marker(
+                [47.6074655, -122.3293768],
+                {"tags": ["Clinic"]}
+            ).addTo(map_0c302df64e4072df909d590ea96fbef6);
+        
+    
+            var icon_9b16bcafaa15067921596696e5f10b49 = L.AwesomeMarkers.icon(
+                {"extraClasses": "fa-rotate-0", "icon": "c", "iconColor": "white", "markerColor": "orange", "prefix": "fa"}
+            );
+            marker_26c98a7b0604a75f35e829b56d6c71bd.setIcon(icon_9b16bcafaa15067921596696e5f10b49);
+        
+    
+            marker_26c98a7b0604a75f35e829b56d6c71bd.bindTooltip(
+                `<div>
+                     The Polyclinic Madison Center<br>Street: 7th Avenue
+                 </div>`,
+                {"sticky": true}
+            );
+        
+    
+            var marker_7e63ff7236a669e09ad0ab6ade69c87c = L.marker(
+                [47.6385994, -122.3562176],
+                {"tags": ["Dental Care"]}
+            ).addTo(map_0c302df64e4072df909d590ea96fbef6);
+        
+    
+            var icon_da3ba96be6c9f0fe51857855e3d93e4f = L.AwesomeMarkers.icon(
+                {"extraClasses": "fa-rotate-0", "icon": "tooth", "iconColor": "white", "markerColor": "red", "prefix": "fa"}
+            );
+            marker_7e63ff7236a669e09ad0ab6ade69c87c.setIcon(icon_da3ba96be6c9f0fe51857855e3d93e4f);
+        
+    
+            marker_7e63ff7236a669e09ad0ab6ade69c87c.bindTooltip(
+                `<div>
+                     Queen Anne Family Dental<br>Street: Boston Street
+                 </div>`,
+                {"sticky": true}
+            );
+        
+    
+            var marker_db851b5c0869dde7887f925874a002fa = L.marker(
+                [47.6385445, -122.3560564],
+                {"tags": ["Clinic"]}
+            ).addTo(map_0c302df64e4072df909d590ea96fbef6);
+        
+    
+            var icon_2deedd864de2be123faeca706c95ed2c = L.AwesomeMarkers.icon(
+                {"extraClasses": "fa-rotate-0", "icon": "c", "iconColor": "white", "markerColor": "orange", "prefix": "fa"}
+            );
+            marker_db851b5c0869dde7887f925874a002fa.setIcon(icon_2deedd864de2be123faeca706c95ed2c);
+        
+    
+            marker_db851b5c0869dde7887f925874a002fa.bindTooltip(
+                `<div>
+                     Eye Clinics Of Seattle<br>Street: Boston Street
+                 </div>`,
+                {"sticky": true}
+            );
+        
+    
+            var marker_2f92fcfe1fb387c33f8050f4bc4d701d = L.marker(
+                [47.5195901, -122.2696058],
+                {"tags": ["Clinic"]}
+            ).addTo(map_0c302df64e4072df909d590ea96fbef6);
+        
+    
+            var icon_a22469a086fe3be54577a596458eb278 = L.AwesomeMarkers.icon(
+                {"extraClasses": "fa-rotate-0", "icon": "c", "iconColor": "white", "markerColor": "orange", "prefix": "fa"}
+            );
+            marker_2f92fcfe1fb387c33f8050f4bc4d701d.setIcon(icon_a22469a086fe3be54577a596458eb278);
+        
+    
+            marker_2f92fcfe1fb387c33f8050f4bc4d701d.bindTooltip(
+                `<div>
+                     Neighborcare Health<br>Street: None
+                 </div>`,
+                {"sticky": true}
+            );
+        
+    
+            var marker_1b6058320edd44bd84af02a54569987d = L.marker(
+                [47.6612753, -122.3291181],
+                {"tags": ["Clinic"]}
+            ).addTo(map_0c302df64e4072df909d590ea96fbef6);
+        
+    
+            var icon_4d26da8c8a9b20024da4d1de7fbdbbf6 = L.AwesomeMarkers.icon(
+                {"extraClasses": "fa-rotate-0", "icon": "c", "iconColor": "white", "markerColor": "orange", "prefix": "fa"}
+            );
+            marker_1b6058320edd44bd84af02a54569987d.setIcon(icon_4d26da8c8a9b20024da4d1de7fbdbbf6);
+        
+    
+            marker_1b6058320edd44bd84af02a54569987d.bindTooltip(
+                `<div>
+                     Seattle Orthopedic Center<br>Street: North 45th Street
+                 </div>`,
+                {"sticky": true}
+            );
+        
+    
+            var marker_abaa2a35d288b93a65b5742daf9b5cd9 = L.marker(
+                [47.6520439, -122.3424296],
+                {"tags": ["Clinic"]}
+            ).addTo(map_0c302df64e4072df909d590ea96fbef6);
+        
+    
+            var icon_705bbdbbec388b59f8e2439dd6f9fec4 = L.AwesomeMarkers.icon(
+                {"extraClasses": "fa-rotate-0", "icon": "c", "iconColor": "white", "markerColor": "orange", "prefix": "fa"}
+            );
+            marker_abaa2a35d288b93a65b5742daf9b5cd9.setIcon(icon_705bbdbbec388b59f8e2439dd6f9fec4);
+        
+    
+            marker_abaa2a35d288b93a65b5742daf9b5cd9.bindTooltip(
+                `<div>
+                     Bastyr Center for Natural Health<br>Street: Stone Way North
+                 </div>`,
+                {"sticky": true}
+            );
+        
+    
+            var marker_1c643a3fea802c56acf94ab5959bcacc = L.marker(
+                [47.6555604, -122.3367803],
+                {"tags": ["Dental Care"]}
+            ).addTo(map_0c302df64e4072df909d590ea96fbef6);
+        
+    
+            var icon_bdc984fa3e5e0e88deca420a09ac5935 = L.AwesomeMarkers.icon(
+                {"extraClasses": "fa-rotate-0", "icon": "tooth", "iconColor": "white", "markerColor": "red", "prefix": "fa"}
+            );
+            marker_1c643a3fea802c56acf94ab5959bcacc.setIcon(icon_bdc984fa3e5e0e88deca420a09ac5935);
+        
+    
+            marker_1c643a3fea802c56acf94ab5959bcacc.bindTooltip(
+                `<div>
+                     Wallingford Dental Arts<br>Street: Wallingford Avenue North
+                 </div>`,
+                {"sticky": true}
+            );
+        
+    
+            var marker_29f3f259f0f10c0e0f28f5c1fbc6373c = L.marker(
+                [47.6712689, -122.3764194],
+                {"tags": ["Dental Care"]}
+            ).addTo(map_0c302df64e4072df909d590ea96fbef6);
+        
+    
+            var icon_e5a5c994b12870d4ae21756b94f5ba6f = L.AwesomeMarkers.icon(
+                {"extraClasses": "fa-rotate-0", "icon": "tooth", "iconColor": "white", "markerColor": "red", "prefix": "fa"}
+            );
+            marker_29f3f259f0f10c0e0f28f5c1fbc6373c.setIcon(icon_e5a5c994b12870d4ae21756b94f5ba6f);
+        
+    
+            marker_29f3f259f0f10c0e0f28f5c1fbc6373c.bindTooltip(
+                `<div>
+                     Ballard Dental Arts<br>Street: 15th Avenue Northwest
+                 </div>`,
+                {"sticky": true}
+            );
+        
+    
+            var marker_ae465c460b9bdb0efe7b84ffa66639e7 = L.marker(
+                [47.6752016, -122.3877953],
+                {"tags": ["Dental Care"]}
+            ).addTo(map_0c302df64e4072df909d590ea96fbef6);
+        
+    
+            var icon_1727f52ea90ca4737bc0f7ec99fa726e = L.AwesomeMarkers.icon(
+                {"extraClasses": "fa-rotate-0", "icon": "tooth", "iconColor": "white", "markerColor": "red", "prefix": "fa"}
+            );
+            marker_ae465c460b9bdb0efe7b84ffa66639e7.setIcon(icon_1727f52ea90ca4737bc0f7ec99fa726e);
+        
+    
+            marker_ae465c460b9bdb0efe7b84ffa66639e7.bindTooltip(
+                `<div>
+                     Dentistry For Adults & Children<br>Street: 24th Avenue Northwest
+                 </div>`,
+                {"sticky": true}
+            );
+        
+    
+            var marker_2f46b72e2d2c9a7818e4c56c1d869ddf = L.marker(
+                [47.6869394, -122.3772317],
+                {"tags": ["Dental Care"]}
+            ).addTo(map_0c302df64e4072df909d590ea96fbef6);
+        
+    
+            var icon_e79a31402b3efe63933e1c5a3a64bbcd = L.AwesomeMarkers.icon(
+                {"extraClasses": "fa-rotate-0", "icon": "tooth", "iconColor": "white", "markerColor": "red", "prefix": "fa"}
+            );
+            marker_2f46b72e2d2c9a7818e4c56c1d869ddf.setIcon(icon_e79a31402b3efe63933e1c5a3a64bbcd);
+        
+    
+            marker_2f46b72e2d2c9a7818e4c56c1d869ddf.bindTooltip(
+                `<div>
+                     Crown Hill Dental Care<br>Street: 15th Avenue Northwest
+                 </div>`,
+                {"sticky": true}
+            );
+        
+    
+            var marker_281e280b79dc1b1e27147ae10df2a583 = L.marker(
+                [47.671725, -122.3760093],
+                {"tags": ["Dental Care"]}
+            ).addTo(map_0c302df64e4072df909d590ea96fbef6);
+        
+    
+            var icon_3cabd6aca78aaebff471aaae1defa2b0 = L.AwesomeMarkers.icon(
+                {"extraClasses": "fa-rotate-0", "icon": "tooth", "iconColor": "white", "markerColor": "red", "prefix": "fa"}
+            );
+            marker_281e280b79dc1b1e27147ae10df2a583.setIcon(icon_3cabd6aca78aaebff471aaae1defa2b0);
+        
+    
+            marker_281e280b79dc1b1e27147ae10df2a583.bindTooltip(
+                `<div>
+                     Gentle Dental<br>Street: 15th Avenue Northwest
+                 </div>`,
+                {"sticky": true}
+            );
+        
+    
+            var marker_8ae99cbfde66d40c6d04d868b67d226d = L.marker(
+                [47.6263718, -122.3294307],
+                {"tags": ["Clinic"]}
+            ).addTo(map_0c302df64e4072df909d590ea96fbef6);
+        
+    
+            var icon_38611960cc9472b8644bef3795d49e43 = L.AwesomeMarkers.icon(
+                {"extraClasses": "fa-rotate-0", "icon": "c", "iconColor": "white", "markerColor": "orange", "prefix": "fa"}
+            );
+            marker_8ae99cbfde66d40c6d04d868b67d226d.setIcon(icon_38611960cc9472b8644bef3795d49e43);
+        
+    
+            marker_8ae99cbfde66d40c6d04d868b67d226d.bindTooltip(
+                `<div>
+                     Seattle Cancer Care Alliance<br>Street: Eastlake Avenue East
+                 </div>`,
+                {"sticky": true}
+            );
+        
+    
+            var marker_bd3b01ef308cc5f152634e1619c1e6cf = L.marker(
+                [47.6988876, -122.3662302],
+                {"tags": ["Clinic"]}
+            ).addTo(map_0c302df64e4072df909d590ea96fbef6);
+        
+    
+            var icon_32c77a921d0a4c15985de21b2a7ec55f = L.AwesomeMarkers.icon(
+                {"extraClasses": "fa-rotate-0", "icon": "c", "iconColor": "white", "markerColor": "orange", "prefix": "fa"}
+            );
+            marker_bd3b01ef308cc5f152634e1619c1e6cf.setIcon(icon_32c77a921d0a4c15985de21b2a7ec55f);
+        
+    
+            marker_bd3b01ef308cc5f152634e1619c1e6cf.bindTooltip(
+                `<div>
+                     Genesis HealthCare - Ballard Center<br>Street: Northwest 95th Street
+                 </div>`,
+                {"sticky": true}
+            );
+        
+    
+            var marker_49ba549751a6cca24b8089dede6469fd = L.marker(
+                [47.6803454, -122.2899378],
+                {"tags": ["Dental Care"]}
+            ).addTo(map_0c302df64e4072df909d590ea96fbef6);
+        
+    
+            var icon_7eae17dbbd50f3f02dc5bdcee50e29dc = L.AwesomeMarkers.icon(
+                {"extraClasses": "fa-rotate-0", "icon": "tooth", "iconColor": "white", "markerColor": "red", "prefix": "fa"}
+            );
+            marker_49ba549751a6cca24b8089dede6469fd.setIcon(icon_7eae17dbbd50f3f02dc5bdcee50e29dc);
+        
+    
+            marker_49ba549751a6cca24b8089dede6469fd.bindTooltip(
+                `<div>
+                     None<br>Street: None
+                 </div>`,
+                {"sticky": true}
+            );
+        
+    
+            var marker_dafce8ac15e70a7586c91f7f2756d0e3 = L.marker(
+                [47.6779511, -122.2638704],
+                {"tags": ["Clinic"]}
+            ).addTo(map_0c302df64e4072df909d590ea96fbef6);
+        
+    
+            var icon_d2364cddc61258a5c68afde141e3e9a9 = L.AwesomeMarkers.icon(
+                {"extraClasses": "fa-rotate-0", "icon": "c", "iconColor": "white", "markerColor": "orange", "prefix": "fa"}
+            );
+            marker_dafce8ac15e70a7586c91f7f2756d0e3.setIcon(icon_d2364cddc61258a5c68afde141e3e9a9);
+        
+    
+            marker_dafce8ac15e70a7586c91f7f2756d0e3.bindTooltip(
+                `<div>
+                     Seattle Children's Magnuson Clinic<br>Street: Sand Point Way Northeast
+                 </div>`,
+                {"sticky": true}
+            );
+        
+    
+            var marker_7100e702bb71e9500e9794c9b1fa442c = L.marker(
+                [47.7129154, -122.3118406],
+                {"tags": ["Dental Care"]}
+            ).addTo(map_0c302df64e4072df909d590ea96fbef6);
+        
+    
+            var icon_fff41073f25dbd2b9a4ffcb4987384b7 = L.AwesomeMarkers.icon(
+                {"extraClasses": "fa-rotate-0", "icon": "tooth", "iconColor": "white", "markerColor": "red", "prefix": "fa"}
+            );
+            marker_7100e702bb71e9500e9794c9b1fa442c.setIcon(icon_fff41073f25dbd2b9a4ffcb4987384b7);
+        
+    
+            marker_7100e702bb71e9500e9794c9b1fa442c.bindTooltip(
+                `<div>
+                     Emerald Dental<br>Street: 15th Avenue Northeast
+                 </div>`,
+                {"sticky": true}
+            );
+        
+    
+            var marker_bed3a7cfcf93dcf357f08656b3c548eb = L.marker(
+                [47.714969, -122.3122449],
+                {"tags": ["Dental Care"]}
+            ).addTo(map_0c302df64e4072df909d590ea96fbef6);
+        
+    
+            var icon_63112e2ecc7cbee6e672f6d6747ac0b5 = L.AwesomeMarkers.icon(
+                {"extraClasses": "fa-rotate-0", "icon": "tooth", "iconColor": "white", "markerColor": "red", "prefix": "fa"}
+            );
+            marker_bed3a7cfcf93dcf357f08656b3c548eb.setIcon(icon_63112e2ecc7cbee6e672f6d6747ac0b5);
+        
+    
+            marker_bed3a7cfcf93dcf357f08656b3c548eb.bindTooltip(
+                `<div>
+                     Kim Okamura, DDS<br>Street: 15th Avenue Northeast
+                 </div>`,
+                {"sticky": true}
+            );
+        
+    
+            var marker_fbce25db28360f1b634ec4d4ffc3238d = L.marker(
+                [47.6386583, -122.3972841],
+                {"tags": ["Pharmacy"]}
+            ).addTo(map_0c302df64e4072df909d590ea96fbef6);
+        
+    
+            var icon_22a9c1a94b94c2d96b75a9e686a79626 = L.AwesomeMarkers.icon(
+                {"extraClasses": "fa-rotate-0", "icon": "p", "iconColor": "white", "markerColor": "green", "prefix": "fa"}
+            );
+            marker_fbce25db28360f1b634ec4d4ffc3238d.setIcon(icon_22a9c1a94b94c2d96b75a9e686a79626);
+        
+    
+            marker_fbce25db28360f1b634ec4d4ffc3238d.bindTooltip(
+                `<div>
+                     Bartell Drugs<br>Street: 32nd Avenue West
+                 </div>`,
+                {"sticky": true}
+            );
+        
+    
+            var marker_909cd66c9cba7fde5b558582ca64dc6a = L.marker(
+                [47.6805785, -122.3554875],
+                {"tags": ["Dental Care"]}
+            ).addTo(map_0c302df64e4072df909d590ea96fbef6);
+        
+    
+            var icon_576abb181a0b322d643216728a115412 = L.AwesomeMarkers.icon(
+                {"extraClasses": "fa-rotate-0", "icon": "tooth", "iconColor": "white", "markerColor": "red", "prefix": "fa"}
+            );
+            marker_909cd66c9cba7fde5b558582ca64dc6a.setIcon(icon_576abb181a0b322d643216728a115412);
+        
+    
+            marker_909cd66c9cba7fde5b558582ca64dc6a.bindTooltip(
+                `<div>
+                     Phinney Ridge Dental<br>Street: Greenwood Avenue North
+                 </div>`,
+                {"sticky": true}
+            );
+        
+    
+            var marker_1b5890ee9998f720f2c5da38ddc10c2f = L.marker(
+                [47.6874235, -122.3440038],
+                {"tags": ["Dental Care"]}
+            ).addTo(map_0c302df64e4072df909d590ea96fbef6);
+        
+    
+            var icon_305b4ef30014eee134e1dfeb10e0f8c2 = L.AwesomeMarkers.icon(
+                {"extraClasses": "fa-rotate-0", "icon": "tooth", "iconColor": "white", "markerColor": "red", "prefix": "fa"}
+            );
+            marker_1b5890ee9998f720f2c5da38ddc10c2f.setIcon(icon_305b4ef30014eee134e1dfeb10e0f8c2);
+        
+    
+            marker_1b5890ee9998f720f2c5da38ddc10c2f.bindTooltip(
+                `<div>
+                     Green Lake Cosmetic Dentistry<br>Street: Aurora Avenue North
+                 </div>`,
+                {"sticky": true}
+            );
+        
+    
+            var marker_2810c169bf6f11029520f0c6c8ed0409 = L.marker(
+                [47.7042223, -122.3322742],
+                {"tags": ["Clinic"]}
+            ).addTo(map_0c302df64e4072df909d590ea96fbef6);
+        
+    
+            var icon_fc3bac9b68a8072226dfb41db25ab4f6 = L.AwesomeMarkers.icon(
+                {"extraClasses": "fa-rotate-0", "icon": "c", "iconColor": "white", "markerColor": "orange", "prefix": "fa"}
+            );
+            marker_2810c169bf6f11029520f0c6c8ed0409.setIcon(icon_fc3bac9b68a8072226dfb41db25ab4f6);
+        
+    
+            marker_2810c169bf6f11029520f0c6c8ed0409.bindTooltip(
+                `<div>
+                     Northwest Outpatient Medical Center<br>Street: Meridian Avenue North
+                 </div>`,
+                {"sticky": true}
+            );
+        
+    
+            var marker_27282a3b6d4d38b5141d49c7ef6cfd8c = L.marker(
+                [47.7047554, -122.3442108],
+                {"tags": ["Dental Care"]}
+            ).addTo(map_0c302df64e4072df909d590ea96fbef6);
+        
+    
+            var icon_2fafdb8f569221ada8e7a1aac1909f2d = L.AwesomeMarkers.icon(
+                {"extraClasses": "fa-rotate-0", "icon": "tooth", "iconColor": "white", "markerColor": "red", "prefix": "fa"}
+            );
+            marker_27282a3b6d4d38b5141d49c7ef6cfd8c.setIcon(icon_2fafdb8f569221ada8e7a1aac1909f2d);
+        
+    
+            marker_27282a3b6d4d38b5141d49c7ef6cfd8c.bindTooltip(
+                `<div>
+                     Seattle's Family Dentistry<br>Street: Aurora Avenue North
+                 </div>`,
+                {"sticky": true}
+            );
+        
+    
+            var marker_79135b70e4de66e47e7c234abf0879dd = L.marker(
+                [47.6486458, -122.30556],
+                {"tags": ["Clinic"]}
+            ).addTo(map_0c302df64e4072df909d590ea96fbef6);
+        
+    
+            var icon_90cbb68f3631d937999561cede233227 = L.AwesomeMarkers.icon(
+                {"extraClasses": "fa-rotate-0", "icon": "c", "iconColor": "white", "markerColor": "orange", "prefix": "fa"}
+            );
+            marker_79135b70e4de66e47e7c234abf0879dd.setIcon(icon_90cbb68f3631d937999561cede233227);
+        
+    
+            marker_79135b70e4de66e47e7c234abf0879dd.bindTooltip(
+                `<div>
+                     Brotman Baty Surgery Pavilion<br>Street: Northeast Pacific Street
+                 </div>`,
+                {"sticky": true}
+            );
+        
+    
+            var marker_52eb525cba688fe7e975a4f07904f9f7 = L.marker(
+                [47.6616737, -122.3379221],
+                {"tags": ["Dental Care"]}
+            ).addTo(map_0c302df64e4072df909d590ea96fbef6);
+        
+    
+            var icon_4f8d0ec4dad710efb1fa3bb2a9eb55d9 = L.AwesomeMarkers.icon(
+                {"extraClasses": "fa-rotate-0", "icon": "tooth", "iconColor": "white", "markerColor": "red", "prefix": "fa"}
+            );
+            marker_52eb525cba688fe7e975a4f07904f9f7.setIcon(icon_4f8d0ec4dad710efb1fa3bb2a9eb55d9);
+        
+    
+            marker_52eb525cba688fe7e975a4f07904f9f7.bindTooltip(
+                `<div>
+                     Wallingford Family Dentistry<br>Street: North 45th Street
+                 </div>`,
+                {"sticky": true}
+            );
+        
+    
+            var marker_468f00e7435140a47f7e319632f83b66 = L.marker(
+                [47.6629883, -122.3441034],
+                {"tags": ["Dental Care"]}
+            ).addTo(map_0c302df64e4072df909d590ea96fbef6);
+        
+    
+            var icon_3a232482dfb86063c6233ee413e3f734 = L.AwesomeMarkers.icon(
+                {"extraClasses": "fa-rotate-0", "icon": "tooth", "iconColor": "white", "markerColor": "red", "prefix": "fa"}
+            );
+            marker_468f00e7435140a47f7e319632f83b66.setIcon(icon_3a232482dfb86063c6233ee413e3f734);
+        
+    
+            marker_468f00e7435140a47f7e319632f83b66.bindTooltip(
+                `<div>
+                     Greenlake Dental<br>Street: Midvale Avenue North
+                 </div>`,
+                {"sticky": true}
+            );
+        
+    
+            var marker_f2e4c455829d35d427168143bd2634a7 = L.marker(
+                [47.5638205, -122.2710863],
+                {"tags": ["Clinic"]}
+            ).addTo(map_0c302df64e4072df909d590ea96fbef6);
+        
+    
+            var icon_90af9502dc6edd43b4f43d49d8b67f10 = L.AwesomeMarkers.icon(
+                {"extraClasses": "fa-rotate-0", "icon": "c", "iconColor": "white", "markerColor": "orange", "prefix": "fa"}
+            );
+            marker_f2e4c455829d35d427168143bd2634a7.setIcon(icon_90af9502dc6edd43b4f43d49d8b67f10);
+        
+    
+            marker_f2e4c455829d35d427168143bd2634a7.bindTooltip(
+                `<div>
+                     Radiance Women's Wellness<br>Street: 50th Avenue South
+                 </div>`,
+                {"sticky": true}
+            );
+        
+    
+            var marker_9e52711eb758ddc00d654d45aa408b52 = L.marker(
+                [47.5221757, -122.2698051],
+                {"tags": ["Dental Care"]}
+            ).addTo(map_0c302df64e4072df909d590ea96fbef6);
+        
+    
+            var icon_a1316cfd7fb8dce0027f08c021339cc6 = L.AwesomeMarkers.icon(
+                {"extraClasses": "fa-rotate-0", "icon": "tooth", "iconColor": "white", "markerColor": "red", "prefix": "fa"}
+            );
+            marker_9e52711eb758ddc00d654d45aa408b52.setIcon(icon_a1316cfd7fb8dce0027f08c021339cc6);
+        
+    
+            marker_9e52711eb758ddc00d654d45aa408b52.bindTooltip(
+                `<div>
+                     Rainier Beach Dential<br>Street: Rainier Avenue South
+                 </div>`,
+                {"sticky": true}
+            );
+        
+    
+            var marker_920c46673fad48db1561788967064902 = L.marker(
+                [47.575488, -122.309517],
+                {"tags": ["Dental Care"]}
+            ).addTo(map_0c302df64e4072df909d590ea96fbef6);
+        
+    
+            var icon_84759676ebe6d7834966643ed558a65d = L.AwesomeMarkers.icon(
+                {"extraClasses": "fa-rotate-0", "icon": "tooth", "iconColor": "white", "markerColor": "red", "prefix": "fa"}
+            );
+            marker_920c46673fad48db1561788967064902.setIcon(icon_84759676ebe6d7834966643ed558a65d);
+        
+    
+            marker_920c46673fad48db1561788967064902.bindTooltip(
+                `<div>
+                     Beacon Hill Dental Associates<br>Street: Beacon Avenue South
+                 </div>`,
+                {"sticky": true}
+            );
+        
+    
+            var marker_cc49f6c024238bc90005a3c83315c84c = L.marker(
+                [47.6012695, -122.3043339],
+                {"tags": ["Clinic"]}
+            ).addTo(map_0c302df64e4072df909d590ea96fbef6);
+        
+    
+            var icon_55c00089c312ce1fa21a7219c1286e2d = L.AwesomeMarkers.icon(
+                {"extraClasses": "fa-rotate-0", "icon": "c", "iconColor": "white", "markerColor": "orange", "prefix": "fa"}
+            );
+            marker_cc49f6c024238bc90005a3c83315c84c.setIcon(icon_55c00089c312ce1fa21a7219c1286e2d);
+        
+    
+            marker_cc49f6c024238bc90005a3c83315c84c.bindTooltip(
+                `<div>
+                     Central Area Health Care Center<br>Street: East Yesler Way
+                 </div>`,
+                {"sticky": true}
+            );
+        
+    
+            var marker_59e5f6c4a0d1cdfc4500ff4bd403987e = L.marker(
+                [47.5840933, -122.3019476],
+                {"tags": ["Pharmacy"]}
+            ).addTo(map_0c302df64e4072df909d590ea96fbef6);
+        
+    
+            var icon_11d4023878ef3aa3d4642296cf512482 = L.AwesomeMarkers.icon(
+                {"extraClasses": "fa-rotate-0", "icon": "p", "iconColor": "white", "markerColor": "green", "prefix": "fa"}
+            );
+            marker_59e5f6c4a0d1cdfc4500ff4bd403987e.setIcon(icon_11d4023878ef3aa3d4642296cf512482);
+        
+    
+            marker_59e5f6c4a0d1cdfc4500ff4bd403987e.bindTooltip(
+                `<div>
+                     Nguyen Pharmacy<br>Street: Rainier Avenue South
+                 </div>`,
+                {"sticky": true}
+            );
+        
+    
+            var marker_439dd5d04ac1fba971b72220e415944a = L.marker(
+                [47.5615062, -122.3803608],
+                {"tags": ["Clinic"]}
+            ).addTo(map_0c302df64e4072df909d590ea96fbef6);
+        
+    
+            var icon_2afeb3b2de19d0d3a5e1c31784e244b3 = L.AwesomeMarkers.icon(
+                {"extraClasses": "fa-rotate-0", "icon": "c", "iconColor": "white", "markerColor": "orange", "prefix": "fa"}
+            );
+            marker_439dd5d04ac1fba971b72220e415944a.setIcon(icon_2afeb3b2de19d0d3a5e1c31784e244b3);
+        
+    
+            marker_439dd5d04ac1fba971b72220e415944a.bindTooltip(
+                `<div>
+                     Franciscan Medical Clinic<br>Street: Fauntleroy Way Southwest
+                 </div>`,
+                {"sticky": true}
+            );
+        
+    
+            var marker_c913107d5a978a66aa8bd3c6645749ae = L.marker(
+                [47.5646469, -122.3870289],
+                {"tags": ["Dental Care"]}
+            ).addTo(map_0c302df64e4072df909d590ea96fbef6);
+        
+    
+            var icon_47da99a827b86be3c639335eb6f03896 = L.AwesomeMarkers.icon(
+                {"extraClasses": "fa-rotate-0", "icon": "tooth", "iconColor": "white", "markerColor": "red", "prefix": "fa"}
+            );
+            marker_c913107d5a978a66aa8bd3c6645749ae.setIcon(icon_47da99a827b86be3c639335eb6f03896);
+        
+    
+            marker_c913107d5a978a66aa8bd3c6645749ae.bindTooltip(
+                `<div>
+                     K/N<br>Street: California Avenue Southwest
+                 </div>`,
+                {"sticky": true}
+            );
+        
+    
+            var marker_8b6f8bd0d1fc9c08a750a8fad9243cb9 = L.marker(
+                [47.6196317, -122.3430141],
+                {"tags": ["Dental Care"]}
+            ).addTo(map_0c302df64e4072df909d590ea96fbef6);
+        
+    
+            var icon_c3eef961ac85ffa8454b05e57bca98b0 = L.AwesomeMarkers.icon(
+                {"extraClasses": "fa-rotate-0", "icon": "tooth", "iconColor": "white", "markerColor": "red", "prefix": "fa"}
+            );
+            marker_8b6f8bd0d1fc9c08a750a8fad9243cb9.setIcon(icon_c3eef961ac85ffa8454b05e57bca98b0);
+        
+    
+            marker_8b6f8bd0d1fc9c08a750a8fad9243cb9.bindTooltip(
+                `<div>
+                     Willamette Dental Group<br>Street: Dexter Avenue North
+                 </div>`,
+                {"sticky": true}
+            );
+        
+    
+            var marker_7eb468a07f76e707a037c923b5b8e2cd = L.marker(
+                [47.5476487, -122.3756513],
+                {"tags": ["Clinic"]}
+            ).addTo(map_0c302df64e4072df909d590ea96fbef6);
+        
+    
+            var icon_0ac0cabce03b24d5ba54f1cb8a99d2fb = L.AwesomeMarkers.icon(
+                {"extraClasses": "fa-rotate-0", "icon": "c", "iconColor": "white", "markerColor": "orange", "prefix": "fa"}
+            );
+            marker_7eb468a07f76e707a037c923b5b8e2cd.setIcon(icon_0ac0cabce03b24d5ba54f1cb8a99d2fb);
+        
+    
+            marker_7eb468a07f76e707a037c923b5b8e2cd.bindTooltip(
+                `<div>
+                     Neighborcare Health at High Point<br>Street: 35th Avenue Southwest
+                 </div>`,
+                {"sticky": true}
+            );
+        
+    
+            var marker_17c818ad078c2c246b700371497b12b5 = L.marker(
+                [47.5540519, -122.2798863],
+                {"tags": ["Clinic"]}
+            ).addTo(map_0c302df64e4072df909d590ea96fbef6);
+        
+    
+            var icon_45aae47d4fdfc5adce7a8d8733e2df0e = L.AwesomeMarkers.icon(
+                {"extraClasses": "fa-rotate-0", "icon": "c", "iconColor": "white", "markerColor": "orange", "prefix": "fa"}
+            );
+            marker_17c818ad078c2c246b700371497b12b5.setIcon(icon_45aae47d4fdfc5adce7a8d8733e2df0e);
+        
+    
+            marker_17c818ad078c2c246b700371497b12b5.bindTooltip(
+                `<div>
+                     Kaiser Permanente Rainier Medical Center<br>Street: Rainier Avenue South
+                 </div>`,
+                {"sticky": true}
+            );
+        
+    
+            var marker_2442d55c96d4fc65dd84ed7ce124d6c3 = L.marker(
+                [47.713631, -122.3129136],
+                {"tags": ["Clinic"]}
+            ).addTo(map_0c302df64e4072df909d590ea96fbef6);
+        
+    
+            var icon_f4158dfb54ec206763804428d0673698 = L.AwesomeMarkers.icon(
+                {"extraClasses": "fa-rotate-0", "icon": "c", "iconColor": "white", "markerColor": "orange", "prefix": "fa"}
+            );
+            marker_2442d55c96d4fc65dd84ed7ce124d6c3.setIcon(icon_f4158dfb54ec206763804428d0673698);
+        
+    
+            marker_2442d55c96d4fc65dd84ed7ce124d6c3.bindTooltip(
+                `<div>
+                     The Polyclinic Northwest Pediatric<br>Street: 15th Avenue Northeast
+                 </div>`,
+                {"sticky": true}
+            );
+        
+    
+            var marker_424898db3bdaa3ec6451fd4cfb34ca53 = L.marker(
+                [47.6725338, -122.3175067],
+                {"tags": ["Dental Care"]}
+            ).addTo(map_0c302df64e4072df909d590ea96fbef6);
+        
+    
+            var icon_aa715477ff92ee5a3b342fccfb9bb4c0 = L.AwesomeMarkers.icon(
+                {"extraClasses": "fa-rotate-0", "icon": "tooth", "iconColor": "white", "markerColor": "red", "prefix": "fa"}
+            );
+            marker_424898db3bdaa3ec6451fd4cfb34ca53.setIcon(icon_aa715477ff92ee5a3b342fccfb9bb4c0);
+        
+    
+            marker_424898db3bdaa3ec6451fd4cfb34ca53.bindTooltip(
+                `<div>
+                     Ravenna Dental Clinic<br>Street: Northeast Ravenna Boulevard
+                 </div>`,
+                {"sticky": true}
+            );
+        
+    
+            var marker_9c15c057037260dcc58042577bc5105e = L.marker(
+                [47.5973823, -122.3177056],
+                {"tags": ["Clinic"]}
+            ).addTo(map_0c302df64e4072df909d590ea96fbef6);
+        
+    
+            var icon_aa1fcd0894ed69645278fa4b83113085 = L.AwesomeMarkers.icon(
+                {"extraClasses": "fa-rotate-0", "icon": "c", "iconColor": "white", "markerColor": "orange", "prefix": "fa"}
+            );
+            marker_9c15c057037260dcc58042577bc5105e.setIcon(icon_aa1fcd0894ed69645278fa4b83113085);
+        
+    
+            marker_9c15c057037260dcc58042577bc5105e.bindTooltip(
+                `<div>
+                     Seattle Indian Health Board<br>Street: 12th Avenue South
+                 </div>`,
+                {"sticky": true}
+            );
+        
+    
+            var marker_def9010890bd1cf282a64c655fd31bd1 = L.marker(
+                [47.5813117, -122.3831453],
+                {"tags": ["Dental Care"]}
+            ).addTo(map_0c302df64e4072df909d590ea96fbef6);
+        
+    
+            var icon_90ddbe61a8b2e941bf41269ac61a11f3 = L.AwesomeMarkers.icon(
+                {"extraClasses": "fa-rotate-0", "icon": "tooth", "iconColor": "white", "markerColor": "red", "prefix": "fa"}
+            );
+            marker_def9010890bd1cf282a64c655fd31bd1.setIcon(icon_90ddbe61a8b2e941bf41269ac61a11f3);
+        
+    
+            marker_def9010890bd1cf282a64c655fd31bd1.bindTooltip(
+                `<div>
+                     Admiral Dental<br>Street: Southwest Admiral Way
+                 </div>`,
+                {"sticky": true}
+            );
+        
+    
+            var marker_7b4136a20c22fba7b726b6c11ffa4550 = L.marker(
+                [47.5151321, -122.2782221],
+                {"tags": ["Clinic"]}
+            ).addTo(map_0c302df64e4072df909d590ea96fbef6);
+        
+    
+            var icon_30b7f9e0147353497f8bacc56a9afe39 = L.AwesomeMarkers.icon(
+                {"extraClasses": "fa-rotate-0", "icon": "c", "iconColor": "white", "markerColor": "orange", "prefix": "fa"}
+            );
+            marker_7b4136a20c22fba7b726b6c11ffa4550.setIcon(icon_30b7f9e0147353497f8bacc56a9afe39);
+        
+    
+            marker_7b4136a20c22fba7b726b6c11ffa4550.bindTooltip(
+                `<div>
+                     Northwest Kidney Centers<br>Street: Martin Luther King Junior Way South
+                 </div>`,
+                {"sticky": true}
+            );
+        
+    
+            var marker_780e8a0c949145c4ef0fbb1d32194736 = L.marker(
+                [47.5216089, -122.3653287],
+                {"tags": ["Pharmacy"]}
+            ).addTo(map_0c302df64e4072df909d590ea96fbef6);
+        
+    
+            var icon_7fcc1e9f97610cbbef0a573c7397ba7e = L.AwesomeMarkers.icon(
+                {"extraClasses": "fa-rotate-0", "icon": "p", "iconColor": "white", "markerColor": "green", "prefix": "fa"}
+            );
+            marker_780e8a0c949145c4ef0fbb1d32194736.setIcon(icon_7fcc1e9f97610cbbef0a573c7397ba7e);
+        
+    
+            marker_780e8a0c949145c4ef0fbb1d32194736.bindTooltip(
+                `<div>
+                     Rite Aid<br>Street: Southwest Barton Street
+                 </div>`,
+                {"sticky": true}
+            );
+        
+    
+            var marker_2cc4a1b08e1e6d7dd983e4472b88ab98 = L.marker(
+                [47.6124221, -122.3216562],
+                {"tags": ["Clinic"]}
+            ).addTo(map_0c302df64e4072df909d590ea96fbef6);
+        
+    
+            var icon_42b0e6b158cd46c69adb53791b721977 = L.AwesomeMarkers.icon(
+                {"extraClasses": "fa-rotate-0", "icon": "c", "iconColor": "white", "markerColor": "orange", "prefix": "fa"}
+            );
+            marker_2cc4a1b08e1e6d7dd983e4472b88ab98.setIcon(icon_42b0e6b158cd46c69adb53791b721977);
+        
+    
+            marker_2cc4a1b08e1e6d7dd983e4472b88ab98.bindTooltip(
+                `<div>
+                     The Polyclinic<br>Street: Broadway
+                 </div>`,
+                {"sticky": true}
+            );
+        
+    
+            var marker_7d55425bfbbad619e20dc65207e92f63 = L.marker(
+                [47.6617133, -122.3352799],
+                {"tags": ["Pharmacy"]}
+            ).addTo(map_0c302df64e4072df909d590ea96fbef6);
+        
+    
+            var icon_a16258c9faacb1aff0d0cfd300f35ba4 = L.AwesomeMarkers.icon(
+                {"extraClasses": "fa-rotate-0", "icon": "p", "iconColor": "white", "markerColor": "green", "prefix": "fa"}
+            );
+            marker_7d55425bfbbad619e20dc65207e92f63.setIcon(icon_a16258c9faacb1aff0d0cfd300f35ba4);
+        
+    
+            marker_7d55425bfbbad619e20dc65207e92f63.bindTooltip(
+                `<div>
+                     Bartell Drugs<br>Street: North 45th Street
+                 </div>`,
+                {"sticky": true}
+            );
+        
+    
+            var marker_386a6a9a887236c6779f778eacfb17d0 = L.marker(
+                [47.6948807, -122.3551292],
+                {"tags": ["Pharmacy"]}
+            ).addTo(map_0c302df64e4072df909d590ea96fbef6);
+        
+    
+            var icon_ae8567e7bd396fce2cf971328f98dafc = L.AwesomeMarkers.icon(
+                {"extraClasses": "fa-rotate-0", "icon": "p", "iconColor": "white", "markerColor": "green", "prefix": "fa"}
+            );
+            marker_386a6a9a887236c6779f778eacfb17d0.setIcon(icon_ae8567e7bd396fce2cf971328f98dafc);
+        
+    
+            marker_386a6a9a887236c6779f778eacfb17d0.bindTooltip(
+                `<div>
+                     The Cunning Crow Apothecary<br>Street: None
+                 </div>`,
+                {"sticky": true}
+            );
+        
+    
+            var marker_91123b3f920f56f59b063f727c2b4077 = L.marker(
+                [47.6486234, -122.3058174],
+                {"tags": ["Hospital"]}
+            ).addTo(map_0c302df64e4072df909d590ea96fbef6);
+        
+    
+            var icon_4d79179152bc941ad3f579abd86f8833 = L.AwesomeMarkers.icon(
+                {"extraClasses": "fa-rotate-0", "icon": "hospital", "iconColor": "white", "markerColor": "blue", "prefix": "fa"}
+            );
+            marker_91123b3f920f56f59b063f727c2b4077.setIcon(icon_4d79179152bc941ad3f579abd86f8833);
+        
+    
+            marker_91123b3f920f56f59b063f727c2b4077.bindTooltip(
+                `<div>
+                     University of Washington Medical Center - Montlake<br>Street: Northeast Pacific Street
+                 </div>`,
+                {"sticky": true}
+            );
+        
+    
+            var marker_5f372c996d10d5fc6a8ffbf7b7f77216 = L.marker(
+                [47.6693332, -122.381461],
+                {"tags": ["Clinic"]}
+            ).addTo(map_0c302df64e4072df909d590ea96fbef6);
+        
+    
+            var icon_2dfd73da2bdc0ea972f8b58ed3b8c2b1 = L.AwesomeMarkers.icon(
+                {"extraClasses": "fa-rotate-0", "icon": "c", "iconColor": "white", "markerColor": "orange", "prefix": "fa"}
+            );
+            marker_5f372c996d10d5fc6a8ffbf7b7f77216.setIcon(icon_2dfd73da2bdc0ea972f8b58ed3b8c2b1);
+        
+    
+            marker_5f372c996d10d5fc6a8ffbf7b7f77216.bindTooltip(
+                `<div>
+                     Nyer House<br>Street: Northwest 56th Street
+                 </div>`,
+                {"sticky": true}
+            );
+        
+    
+            var marker_70fa1b0daf6765f2b9f35f632f6e0e6b = L.marker(
+                [47.6682611, -122.3811571],
+                {"tags": ["Hospital"]}
+            ).addTo(map_0c302df64e4072df909d590ea96fbef6);
+        
+    
+            var icon_3a7b6546a411da11bbc72e8cee6cea9e = L.AwesomeMarkers.icon(
+                {"extraClasses": "fa-rotate-0", "icon": "hospital", "iconColor": "white", "markerColor": "blue", "prefix": "fa"}
+            );
+            marker_70fa1b0daf6765f2b9f35f632f6e0e6b.setIcon(icon_3a7b6546a411da11bbc72e8cee6cea9e);
+        
+    
+            marker_70fa1b0daf6765f2b9f35f632f6e0e6b.bindTooltip(
+                `<div>
+                     Swedish Medical Center Ballard Campus<br>Street: Tallman Avenue Northwest
+                 </div>`,
+                {"sticky": true}
+            );
+        
+    
+            var marker_0a2134ba5894fdd3b9e086c9f547f662 = L.marker(
+                [47.6212909, -122.3125947],
+                {"tags": ["Hospital"]}
+            ).addTo(map_0c302df64e4072df909d590ea96fbef6);
+        
+    
+            var icon_d12f008040556857962f8b969fa83010 = L.AwesomeMarkers.icon(
+                {"extraClasses": "fa-rotate-0", "icon": "hospital", "iconColor": "white", "markerColor": "blue", "prefix": "fa"}
+            );
+            marker_0a2134ba5894fdd3b9e086c9f547f662.setIcon(icon_d12f008040556857962f8b969fa83010);
+        
+    
+            marker_0a2134ba5894fdd3b9e086c9f547f662.bindTooltip(
+                `<div>
+                     Kaiser Permanente Capitol Hill Campus<br>Street: 16th Avenue East
+                 </div>`,
+                {"sticky": true}
+            );
+        
+    
+            var marker_4c44788e43ef4656b9fe3131f8c69ffc = L.marker(
+                [47.6111979, -122.3276231],
+                {"tags": ["Hospital"]}
+            ).addTo(map_0c302df64e4072df909d590ea96fbef6);
+        
+    
+            var icon_5a1a7097e2d908de62670660be7b2393 = L.AwesomeMarkers.icon(
+                {"extraClasses": "fa-rotate-0", "icon": "hospital", "iconColor": "white", "markerColor": "blue", "prefix": "fa"}
+            );
+            marker_4c44788e43ef4656b9fe3131f8c69ffc.setIcon(icon_5a1a7097e2d908de62670660be7b2393);
+        
+    
+            marker_4c44788e43ef4656b9fe3131f8c69ffc.bindTooltip(
+                `<div>
+                     Virginia Mason Hospital & Seattle Medical Center<br>Street: 9th Avenue
+                 </div>`,
+                {"sticky": true}
+            );
+        
+    
+            var marker_905b490c9f76ffa1273237b7f93c2361 = L.marker(
+                [47.6093391, -122.3251272],
+                {"tags": ["Hospital"]}
+            ).addTo(map_0c302df64e4072df909d590ea96fbef6);
+        
+    
+            var icon_60cdfd519e4d29f97c933eb24469dbfe = L.AwesomeMarkers.icon(
+                {"extraClasses": "fa-rotate-0", "icon": "hospital", "iconColor": "white", "markerColor": "blue", "prefix": "fa"}
+            );
+            marker_905b490c9f76ffa1273237b7f93c2361.setIcon(icon_60cdfd519e4d29f97c933eb24469dbfe);
+        
+    
+            marker_905b490c9f76ffa1273237b7f93c2361.bindTooltip(
+                `<div>
+                     Swedish First Hill Medical Center<br>Street: Broadway
+                 </div>`,
+                {"sticky": true}
+            );
+        
+    
+            var marker_0552ebff6f9819a75ae51ab2ac03124b = L.marker(
+                [47.6591473, -122.3187908],
+                {"tags": ["Clinic"]}
+            ).addTo(map_0c302df64e4072df909d590ea96fbef6);
+        
+    
+            var icon_266e0557186f62e58d5bda65eb3fcd2a = L.AwesomeMarkers.icon(
+                {"extraClasses": "fa-rotate-0", "icon": "c", "iconColor": "white", "markerColor": "orange", "prefix": "fa"}
+            );
+            marker_0552ebff6f9819a75ae51ab2ac03124b.setIcon(icon_266e0557186f62e58d5bda65eb3fcd2a);
+        
+    
+            marker_0552ebff6f9819a75ae51ab2ac03124b.bindTooltip(
+                `<div>
+                     University of Washington Roosevelt Medical Center<br>Street: None
+                 </div>`,
+                {"sticky": true}
+            );
+        
+    
+            var marker_a27d0d5258ad935910d49ce6bfd932da = L.marker(
+                [47.7061334, -122.3342727],
+                {"tags": ["Clinic"]}
+            ).addTo(map_0c302df64e4072df909d590ea96fbef6);
+        
+    
+            var icon_57b8c3d79b79bdd8e25049721c922bdc = L.AwesomeMarkers.icon(
+                {"extraClasses": "fa-rotate-0", "icon": "c", "iconColor": "white", "markerColor": "orange", "prefix": "fa"}
+            );
+            marker_a27d0d5258ad935910d49ce6bfd932da.setIcon(icon_57b8c3d79b79bdd8e25049721c922bdc);
+        
+    
+            marker_a27d0d5258ad935910d49ce6bfd932da.bindTooltip(
+                `<div>
+                     Meridian Center For Health<br>Street: Meridian Avenue North
+                 </div>`,
+                {"sticky": true}
+            );
+        
+    
+            var marker_345390fa1e7bb25214551d5bde630e49 = L.marker(
+                [47.6079285, -122.3090771],
+                {"tags": ["Hospital"]}
+            ).addTo(map_0c302df64e4072df909d590ea96fbef6);
+        
+    
+            var icon_e690aace2e20a647fb89f71632bba727 = L.AwesomeMarkers.icon(
+                {"extraClasses": "fa-rotate-0", "icon": "hospital", "iconColor": "white", "markerColor": "blue", "prefix": "fa"}
+            );
+            marker_345390fa1e7bb25214551d5bde630e49.setIcon(icon_e690aace2e20a647fb89f71632bba727);
+        
+    
+            marker_345390fa1e7bb25214551d5bde630e49.bindTooltip(
+                `<div>
+                     Swedish Medical Center Cherry Hill Campus<br>Street: 17th Avenue
+                 </div>`,
+                {"sticky": true}
+            );
+        
+    
+            var marker_b1de1c7919ec8d6f17589c22a4b60f3d = L.marker(
+                [47.6267585, -122.3306599],
+                {"tags": ["Clinic"]}
+            ).addTo(map_0c302df64e4072df909d590ea96fbef6);
+        
+    
+            var icon_576a9ce8f6415d48b44b3528ef72796a = L.AwesomeMarkers.icon(
+                {"extraClasses": "fa-rotate-0", "icon": "c", "iconColor": "white", "markerColor": "orange", "prefix": "fa"}
+            );
+            marker_b1de1c7919ec8d6f17589c22a4b60f3d.setIcon(icon_576a9ce8f6415d48b44b3528ef72796a);
+        
+    
+            marker_b1de1c7919ec8d6f17589c22a4b60f3d.bindTooltip(
+                `<div>
+                     None<br>Street: None
+                 </div>`,
+                {"sticky": true}
+            );
+        
+    
+            var marker_6b8bd80e6e1486af900d55703322c703 = L.marker(
+                [47.6617596, -122.2921489],
+                {"tags": ["Clinic"]}
+            ).addTo(map_0c302df64e4072df909d590ea96fbef6);
+        
+    
+            var icon_67e83ee811d1f6d68ab74b50ed020ee0 = L.AwesomeMarkers.icon(
+                {"extraClasses": "fa-rotate-0", "icon": "c", "iconColor": "white", "markerColor": "orange", "prefix": "fa"}
+            );
+            marker_6b8bd80e6e1486af900d55703322c703.setIcon(icon_67e83ee811d1f6d68ab74b50ed020ee0);
+        
+    
+            marker_6b8bd80e6e1486af900d55703322c703.bindTooltip(
+                `<div>
+                     Lakeview Medical Dental<br>Street: Northeast 45th Place
+                 </div>`,
+                {"sticky": true}
+            );
+        
+    
+            var marker_4bfc93c4bf204083b11d34a53721bf81 = L.marker(
+                [47.73366, -122.2920399],
+                {"tags": ["Pharmacy"]}
+            ).addTo(map_0c302df64e4072df909d590ea96fbef6);
+        
+    
+            var icon_3c2280e7e40896e9944a92a05504ff87 = L.AwesomeMarkers.icon(
+                {"extraClasses": "fa-rotate-0", "icon": "p", "iconColor": "white", "markerColor": "green", "prefix": "fa"}
+            );
+            marker_4bfc93c4bf204083b11d34a53721bf81.setIcon(icon_3c2280e7e40896e9944a92a05504ff87);
+        
+    
+            marker_4bfc93c4bf204083b11d34a53721bf81.bindTooltip(
+                `<div>
+                     Walgreens<br>Street: Lake City Way Northeast
+                 </div>`,
+                {"sticky": true}
+            );
+        
+    
+            var tag_filter_button_c1df7544f2e05c604183b2ef710ba126 = L.control.tagFilterButton(
+                {"clearText": "clear", "data": ["Hospital", "Clinic", "Pharmacy", "Dental Care"], "filterOnEveryClick": true, "icon": "fa-filter", "openPopupOnHover": false}
+            ).addTo(map_0c302df64e4072df909d590ea96fbef6);
+        
+</script>
+</html>
